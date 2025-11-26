@@ -45,7 +45,7 @@ export function ResultContainer({
 
   if (!h_w || !v_w) {
     return (
-      <div className="result-container text-center border-1 border-white rounded-xl p-5 place-content-center text-orange-600">
+      <div className="result-container text-center border-1 border-white rounded-xl p-5 place-content-center text-orange-600 text-2xl">
         There's a problem with the input.
       </div>
     );
@@ -97,19 +97,19 @@ export function ResultContainer({
 
   return (
     <div className="result-container text-center border rounded-xl p-5 grid grid-col-2">
-      <div className="place-content-center">
+      <div className="place-content-center text-lg">
         The estimated peak flow is
-        <div className="text-2xl font-bold">{peakFlowFormatted} m³/s,</div>
+        <div className="text-3xl font-bold">{peakFlowFormatted} m³/s,</div>
         with 95% confidence that the true peak flow is less than
-        <div className="text-2xl font-bold">
+        <div className="text-3xl font-bold">
           {peakFlowUpperBoundFormatted} m³/s.
         </div>
       </div>
-      <div className="place-content-center">
+      <div className="place-content-center text-lg">
         The estimated time to failure is
-        <div className="text-2xl font-bold">{timeToFailureFormatted},</div>
+        <div className="text-3xl font-bold">{timeToFailureFormatted},</div>
         with 95% confidence that the true time to failure is larger than
-        <div className="text-2xl font-bold">{timeToFailureUpperBound}.</div>
+        <div className="text-3xl font-bold">{timeToFailureUpperBound}.</div>
       </div>
     </div>
   );

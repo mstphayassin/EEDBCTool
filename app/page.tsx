@@ -3,12 +3,13 @@
 import { DamDescriptionContainer } from "@/components/descriptionInputs";
 import { NumericalInputContainer } from "@/components/numericalInputs";
 import { ResultContainer } from "@/components/results";
+import DamSchematic from "@/components/schematic";
 import Image from "next/image";
 import { useState } from "react";
 
 function ToolContainer() {
-  const [heightOfWater, setHeightOfWater] = useState("5");
-  const [volumeOfWater, setVolumeOfWater] = useState("30000");
+  const [heightOfWater, setHeightOfWater] = useState("5.0");
+  const [volumeOfWater, setVolumeOfWater] = useState("30,000");
   const [depthOfBreach, setDepthOfBreach] = useState("");
   const [heightOfDam, setHeightOfDam] = useState("");
   const [averageWidth, setAverageWidth] = useState("");
@@ -22,7 +23,14 @@ function ToolContainer() {
     useState("Froehlich (1995b)");
 
   return (
-    <div className="rounded-xl p-10 border border-stone-600 border-dashed bg-slate-900" >
+    <div className="rounded-xl p-10 bg-slate-900">
+      <DamSchematic
+        heightOfWater={heightOfWater}
+        depthOfBreach={depthOfBreach}
+        heightOfDam={heightOfDam}
+        averageWidth={averageWidth}
+        volumeOfWater={volumeOfWater}
+      />
       <DamDescriptionContainer
         peakFlowEquationName={peakFlowEquationName}
         onPeakFlowEquationChange={setPeakFlowEquation}
@@ -90,10 +98,10 @@ export default function Home() {
           </h3>
           <p className="text-lg">
             This tool uses empirical equations for dam breach characteristics as
-            well as findings from my study evaluating and recalibrating these
-            equations to produce estimates for the <b>peak flow</b>,
-            <b> time to failure</b>, and <b> breach width</b> of an embankment
-            dam failure.
+            well as findings from the Yassin et al. (2025) study evaluating and
+            recalibrating these equations to produce estimates for the{" "}
+            <b>peak flow</b>,<b> time to failure</b>, and <b> breach width</b>{" "}
+            of an embankment dam failure.
           </p>
           <br />
           <p className="text-lg">

@@ -19,9 +19,9 @@ export function timeStringFormat(timeValueHours: number | string) {
   if (hours > 10) {
     return `${Math.round(hours)}h`;
   } else if (hours > 0) {
-    return `${hoursImprecise}h ${minutesImprecise}m`;
+    return `${hoursImprecise}h ${minutesImprecise}min`;
   } else if (minutes > 0) {
-    return `${minutesImprecise}m ${secondsImprecise}s`;
+    return `${minutesImprecise}min ${secondsImprecise}s`;
   } else {
     return `${seconds}s`;
   }
