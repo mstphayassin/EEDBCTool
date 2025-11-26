@@ -46,7 +46,7 @@ export function ResultContainer({
   if (!h_w || !v_w) {
     return (
       <div className="result-container text-center border-1 border-white rounded-xl p-5 place-content-center text-orange-600">
-        There seems to be a problem with the input.
+        There's a problem with the input.
       </div>
     );
   }
@@ -90,8 +90,8 @@ export function ResultContainer({
     useRecalibrated
   );
   let timeToFailureUpperBound = timeStringFormat(
-    timeToFailureEquation.getLowerBoundRatio(useRecalibrated) *
-      timeToFailurePrediction
+    Number(timeToFailureEquation.getLowerBoundRatio(useRecalibrated) *
+      timeToFailurePrediction).toPrecision(2)
   );
   let timeToFailureFormatted = timeStringFormat(timeToFailurePrediction);
 

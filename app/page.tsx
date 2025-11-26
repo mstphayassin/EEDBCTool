@@ -22,7 +22,7 @@ function ToolContainer() {
     useState("Froehlich (1995b)");
 
   return (
-    <div className="rounded-xl p-10 border border-stone-600 border-dashed" >
+    <div className="rounded-xl p-10 border border-stone-600 border-dashed bg-slate-900" >
       <DamDescriptionContainer
         peakFlowEquationName={peakFlowEquationName}
         onPeakFlowEquationChange={setPeakFlowEquation}
