@@ -13,9 +13,9 @@ function SelectionInput({
   onValueChange: Dispatch<SetStateAction<string>>;
   suppressName?: boolean;
 }) {
-  let optionsJSX = [];
+  const optionsJSX = [];
   let maxSize: number = 0;
-  let displayName = suppressName ? "" : name;
+  const displayName = suppressName ? "" : name;
   for (let i = 0; i < options.length; i++) {
     maxSize = options[i].length > maxSize ? options[i].length : maxSize;
     optionsJSX.push(

@@ -9,7 +9,7 @@ export default function Canvas({
   height: number;
   width: number;
   draw: (canvas: CanvasRenderingContext2D) => void;
-  dependencyArray: any[];
+  dependencyArray: unknown[];
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const frameRef = useRef<number>(0);
@@ -26,7 +26,7 @@ export default function Canvas({
       }
     }
     return () => cancelAnimationFrame(frameRef.current);
-  }, [height, width, ...dependencyArray]);
+  }, [height, width, draw, ...dependencyArray]);
 
   return <canvas className="pb-4" ref={canvasRef} />;
 }

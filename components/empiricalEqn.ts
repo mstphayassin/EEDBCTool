@@ -25,7 +25,7 @@ class EmpiricalEquation {
   rePredict: Estimate;
 
   constructor(shortName: string) {
-    let eqn: EqnListItem = EquationList[shortName];
+    const eqn: EqnListItem = EquationList[shortName];
     this.shortName = shortName;
     this.name = eqn.name;
     this.description = eqn.description;
