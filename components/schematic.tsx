@@ -165,7 +165,7 @@ export default function DamSchematic({
 
       drawDimension(
         ctx,
-        Math.round(w_avg),
+        assumedWavg ? Math.round(w_avg) : w_avg,
         (leftToeX + leftCrestX) / 2,
         hMax - (1 / 4) * unit,
         (rightToeX + rightCrestX) / 2,
