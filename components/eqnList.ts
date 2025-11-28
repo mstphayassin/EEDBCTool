@@ -61,13 +61,13 @@ accurately predicting the peak flow.",
     func: (dam: DamFailure) => {
       let k_e = dam.erodibility === "high" ? 1.51 : 1.0; // Erodibility factor
       k_e = dam.erodibility === "low" ? 0.39 : k_e;
-      let k_m = dam.mode === "overtopping" ? 1.56 : 1.0; // Mode factor
+      const k_m = dam.mode === "overtopping" ? 1.56 : 1.0; // Mode factor
       return (
         k_e * k_m * 0.024 * 9.81 ** 0.5 * dam.h_w ** 1.28 * dam.v_w ** 0.41
       );
     },
     reFunc: (dam: DamFailure) => {
-      let k_m = dam.mode === "overtopping" ? 0.92 : 1.0; // Mode factor
+      const k_m = dam.mode === "overtopping" ? 0.92 : 1.0; // Mode factor
       let k_e = dam.erodibility === "low" ? 1.0 : 1.0;
       k_e = dam.erodibility === "high" ? 3.8 : k_e;
       return (
@@ -121,8 +121,8 @@ improved the model performance compared to simpler models.",
     reMean: 0.0318,
     reStdev: 0.4274,
     func: (dam: DamFailure) => {
-      let k_m = dam.mode === "overtopping" ? 1.85 : 1;
-      let k_h = dam.h_w >= 6.1 ? (dam.h_w / 6.1) ** (1 / 8.0) : 1.0;
+      const k_m = dam.mode === "overtopping" ? 1.85 : 1;
+      const k_h = dam.h_w >= 6.1 ? (dam.h_w / 6.1) ** (1 / 8.0) : 1.0;
       return (
         0.0175 *
         k_m *
@@ -131,8 +131,8 @@ improved the model performance compared to simpler models.",
       );
     },
     reFunc: (dam: DamFailure) => {
-      let k_m = dam.mode === "overtopping" ? 1.01 : 1;
-      let k_h = dam.h_w >= 4.6 ? (dam.h_w / 4.6) ** 0.2 : 1.0; // should be h_b
+      const k_m = dam.mode === "overtopping" ? 1.01 : 1;
+      const k_h = dam.h_w >= 4.6 ? (dam.h_w / 4.6) ** 0.2 : 1.0; // should be h_b
       return (
         0.012 *
         9.81 ** 0.5 *
@@ -157,7 +157,7 @@ compared to simpler models (Yassin et al., 2025).",
     reMean: 0.0318,
     reStdev: 0.4274,
     func: (dam: DamFailure) => {
-      let c =
+      const c =
         dam.type == "core-wall"
           ? [-1.51, -1.09, -0.12, -3.61]
           : [-1.58, -0.76, 0.1, -4.55];
@@ -172,7 +172,7 @@ compared to simpler models (Yassin et al., 2025).",
       );
     },
     reFunc: (dam: DamFailure) => {
-      let c =
+      const c =
         dam.type == "core-wall"
           ? [0.019, -0.16, 0.4, 1.45, 0.08]
           : [0.018, 0.4, 0.44, 0.78, -0.04];
@@ -197,12 +197,12 @@ accurate of the models, but it is still prone to large errors in some cases.",
     reMean: -0.0174,
     reStdev: 0.3635,
     func: (dam: DamFailure) => {
-      let k_e = dam.erodibility === "high" ? 3.8 : 1.0; // Erodibility factor
+      const k_e = dam.erodibility === "high" ? 3.8 : 1.0; // Erodibility factor
       return 0.011 * k_e * 9.81 ** 0.5 * dam.h_w ** 1.11 * dam.v_w ** 0.46;
     },
     reFunc: (dam: DamFailure) => {
       // same as above
-      let k_e = dam.erodibility === "high" ? 3.8 : 1.0; // Erodibility factor
+      const k_e = dam.erodibility === "high" ? 3.8 : 1.0; // Erodibility factor
       return 0.011 * k_e * 9.81 ** 0.5 * dam.h_w ** 1.11 * dam.v_w ** 0.46;
     },
   },
@@ -260,7 +260,7 @@ accurate of the models, but it is still prone to large errors in some cases.",
     reMean: 0.0232,
     reStdev: 0.3075,
     func: (dam: DamFailure) => {
-      let c =
+      const c =
         dam.type == "core-wall"
           ? [1.52, -11.36, -0.43, Math.exp(-1.57)]
           : [0.56, -0.85, -0.32, Math.exp(-0.2)];
@@ -272,7 +272,7 @@ accurate of the models, but it is still prone to large errors in some cases.",
       );
     },
     reFunc: (dam: DamFailure) => {
-      let c =
+      const c =
         dam.type === "core-wall"
           ? [0.0086, 0.45, -0.11, -1.24, 0.47]
           : [0.025, 0.36, -0.22, 0.4, 0.4];

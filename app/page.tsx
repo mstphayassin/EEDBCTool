@@ -29,7 +29,6 @@ function ToolContainer() {
         depthOfBreach={depthOfBreach}
         heightOfDam={heightOfDam}
         averageWidth={averageWidth}
-        volumeOfWater={volumeOfWater}
       />
       <DamDescriptionContainer
         peakFlowEquationName={peakFlowEquationName}

@@ -5,13 +5,11 @@ export default function DamSchematic({
   depthOfBreach,
   heightOfDam,
   averageWidth,
-  volumeOfWater,
 }: {
   heightOfWater: string;
   depthOfBreach: string;
   heightOfDam: string;
   averageWidth: string;
-  volumeOfWater: string;
 }) {
   const draw = (ctx: CanvasRenderingContext2D) => {
     let h_w = Number(heightOfWater?.replace(/,/g, ""));
@@ -43,9 +41,9 @@ export default function DamSchematic({
     }
 
     if (ctx) {
-      let wMax = ctx.canvas.width;
-      let hMax = ctx.canvas.height;
-      let verticalExaggeration = 2;
+      const wMax = ctx.canvas.width;
+      const hMax = ctx.canvas.height;
+      const verticalExaggeration = 2;
 
       // Calculate maximum unit sizes for the figure
       let hBUnitLimit = ((hMax / 4) * h_d) / (h_b - h_d);
@@ -54,7 +52,7 @@ export default function DamSchematic({
       hBUnitLimit = hBUnitLimit > 0 ? hBUnitLimit : Infinity;
       hWUnitLimit = hWUnitLimit > 0 ? hWUnitLimit : Infinity;
       // Choose the largest unit size that satisfies all upper limits
-      let unit = Math.min(
+      const unit = Math.min(
         (1 / 2) * hMax,
         hBUnitLimit,
         hWUnitLimit,
@@ -63,18 +61,18 @@ export default function DamSchematic({
       );
 
       // Set up dam dimensions based on "unit" length, defined above
-      let wCrest =
+      const wCrest =
         w_avg > (h_d * 3) / 4 ? (unit * 3) / 4 : (w_avg / h_d) * unit;
 
-      let baseY = (hMax * 3) / 4;
-      let crestY = baseY - unit;
-      let breachY = crestY + (h_b / h_d) * unit;
-      let waterY = breachY - (h_w / h_d) * unit;
-      let leftCrestX = wMax / 2 - wCrest / 2;
-      let rightCrestX = wMax / 2 + wCrest / 2;
-      let slope = ((w_avg / h_d) * unit - wCrest) / unit;
-      let leftToeX = leftCrestX - (unit * slope) / verticalExaggeration;
-      let rightToeX = rightCrestX + (unit * slope) / verticalExaggeration;
+      const baseY = (hMax * 3) / 4;
+      const crestY = baseY - unit;
+      const breachY = crestY + (h_b / h_d) * unit;
+      const waterY = breachY - (h_w / h_d) * unit;
+      const leftCrestX = wMax / 2 - wCrest / 2;
+      const rightCrestX = wMax / 2 + wCrest / 2;
+      const slope = ((w_avg / h_d) * unit - wCrest) / unit;
+      const leftToeX = leftCrestX - (unit * slope) / verticalExaggeration;
+      const rightToeX = rightCrestX + (unit * slope) / verticalExaggeration;
 
       // 2D dam shape
       ctx.beginPath();
@@ -133,7 +131,7 @@ export default function DamSchematic({
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.moveTo(0, waterY);
-      let waterLineX = Math.min(
+      const waterLineX = Math.min(
         leftCrestX - (slope * (waterY - crestY)) / 2,
         wMax / 2
       );
@@ -216,14 +214,14 @@ function drawDoubleArrow(
   y2: number
 ) {
   const tipLength = 7;
-  let dx = x2 - x1;
-  let dy = y2 - y1;
-  let tipRatio = tipLength / (dx ** 2 + dy ** 2) ** 0.5;
-  let arrowTipDir1 = [
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const tipRatio = tipLength / (dx ** 2 + dy ** 2) ** 0.5;
+  const arrowTipDir1 = [
     (dx * 3 ** 0.5) / 2 + dy / 2,
     (dx * -1) / 2 + (dy * 3 ** 0.5) / 2,
   ];
-  let arrowTipDir2 = [
+  const arrowTipDir2 = [
     (dx * 3 ** 0.5) / 2 - dy / 2,
     dx / 2 + (dy * 3 ** 0.5) / 2,
   ];

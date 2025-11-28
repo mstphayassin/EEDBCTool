@@ -32,21 +32,21 @@ export function ResultContainer({
   erodibility,
   damType,
 }: ResultContainerInputs) {
-  let peakFlowEquation = new PeakFlowEquation(peakFlowEquationName);
-  let timeToFailureEquation = new TimeToFailureEquation(
+  const peakFlowEquation = new PeakFlowEquation(peakFlowEquationName);
+  const timeToFailureEquation = new TimeToFailureEquation(
     timeToFailureEquationName
   );
-  let h_w = Number(heightOfWater?.replace(/,/g, ""));
-  let v_w = Number(volumeOfWater?.replace(/,/g, ""));
+  const h_w = Number(heightOfWater?.replace(/,/g, ""));
+  const v_w = Number(volumeOfWater?.replace(/,/g, ""));
   let h_b = Number(depthOfBreach?.replace(/,/g, ""));
   let h_d = Number(heightOfDam?.replace(/,/g, ""));
   let w_avg = Number(averageWidth?.replace(/,/g, ""));
-  let useRecalibrated = originalOrRecalibrated === "recalibrated";
+  const useRecalibrated = originalOrRecalibrated === "recalibrated";
 
   if (!h_w || !v_w) {
     return (
       <div className="result-container text-center border-1 border-white rounded-xl p-5 place-content-center text-orange-600 text-2xl">
-        There's a problem with the input.
+        There&apos;s a problem with the input.
       </div>
     );
   }
@@ -63,7 +63,7 @@ export function ResultContainer({
     w_avg = h_d * 2.6;
   }
 
-  let inputDam: DamFailure = {
+  const inputDam: DamFailure = {
     h_w: h_w,
     v_w: v_w,
     h_d: h_d,
@@ -74,26 +74,26 @@ export function ResultContainer({
     type: damType,
   };
 
-  let peakFlowPrediction = peakFlowEquation.predict(inputDam, useRecalibrated);
-  let peakFlowUpperBound =
+  const peakFlowPrediction = peakFlowEquation.predict(inputDam, useRecalibrated);
+  const peakFlowUpperBound =
     peakFlowEquation.getUpperBoundRatio(useRecalibrated) * peakFlowPrediction;
 
-  let peakFlowFormatted = parseFloat(
+  const peakFlowFormatted = parseFloat(
     peakFlowPrediction.toPrecision(2)
   ).toLocaleString();
-  let peakFlowUpperBoundFormatted = parseFloat(
+  const peakFlowUpperBoundFormatted = parseFloat(
     peakFlowUpperBound.toPrecision(2)
   ).toLocaleString();
 
-  let timeToFailurePrediction = timeToFailureEquation.predict(
+  const timeToFailurePrediction = timeToFailureEquation.predict(
     inputDam,
     useRecalibrated
   );
-  let timeToFailureUpperBound = timeStringFormat(
+  const timeToFailureUpperBound = timeStringFormat(
     Number(timeToFailureEquation.getLowerBoundRatio(useRecalibrated) *
       timeToFailurePrediction).toPrecision(2)
   );
-  let timeToFailureFormatted = timeStringFormat(timeToFailurePrediction);
+  const timeToFailureFormatted = timeStringFormat(timeToFailurePrediction);
 
   return (
     <div className="result-container text-center border rounded-xl p-5 grid grid-col-2">
